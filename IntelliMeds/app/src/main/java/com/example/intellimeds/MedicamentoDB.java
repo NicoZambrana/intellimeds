@@ -27,8 +27,8 @@ public class MedicamentoDB {
         db.insert(MedsContract.MedsEntry.TABLE_MEDICAMENTOS, null, values);
     }
 
-    //Método para buscar un medicamento mediante el nombre
-    public Medicamento buscarMedicamento(String nombre) {
+    //Método para buscar un medicamento mediante el id
+    public Medicamento obtenerMedicamentoPorId(int id) {
         String[] columns = {
                 MedsContract.MedsEntry.COLUMN_ID,
                 MedsContract.MedsEntry.COLUMN_NOMBRE,
@@ -37,8 +37,8 @@ public class MedicamentoDB {
                 MedsContract.MedsEntry.COLUMN_DIAS,
                 MedsContract.MedsEntry.COLUMN_TOMADO
         };
-        String where = MedsContract.MedsEntry.COLUMN_NOMBRE + " = ?";
-        String[] whereArgs = {nombre};
+        String where = MedsContract.MedsEntry.COLUMN_ID + " = ?";
+        String[] whereArgs = {String.valueOf(id)};
 
         Cursor cursor = db.query(MedsContract.MedsEntry.TABLE_MEDICAMENTOS, columns, where, whereArgs, null, null, null);
 
@@ -79,6 +79,36 @@ public class MedicamentoDB {
         cursor.close();
         return lista;
     }
+
+    //Modificar el medicamento
+    public void modificarMedicamento(int id, String nombre, int dosis, String horario, String dias, boolean tomado) {
+        ContentValues values = new ContentValues();
+        values.put(MedsContract.MedsEntry.COLUMN_NOMBRE, nombre);
+        values.put(MedsContract.MedsEntry.COLUMN_DOSIS, dosis);
+        values.put(MedsContract.MedsEntry.COLUMN_HORARIO, horario);
+        values.put(MedsContract.MedsEntry.COLUMN_DIAS, dias);
+        values.put(MedsContract.MedsEntry.COLUMN_TOMADO, tomado ? 1 : 0);
+
+        String where = MedsContract.MedsEntry.COLUMN_ID + " = ?";
+        String[] whereArgs = {String.valueOf(id)};
+
+        int filasActualizadas = db.update(MedsContract.MedsEntry.TABLE_MEDICAMENTOS, values, where, whereArgs);
+
+        if (filasActualizadas > 0) {
+            System.out.println("Medicamento actualizado correctamente");
+        } else {
+            System.out.println("No se encontró el medicamento para actualizar");
+        }
+    }
+
+    // Método para eliminar un medicamento por su ID
+    public void eliminarMedicamento(int id) {
+        String whereClause = MedsContract.MedsEntry.COLUMN_ID + " = ?";
+        String[] whereArgs = {String.valueOf(id)};
+        db.delete(MedsContract.MedsEntry.TABLE_MEDICAMENTOS, whereClause, whereArgs);
+    }
+
+
 
     // Cierra la base de datos al finalizar
     @Override

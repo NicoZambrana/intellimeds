@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del medicamento"
+        android:textSize="18sp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvDosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dosis"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvHorario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Horario"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvDias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Días"
+        android:paddingBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Eliminar medicamento"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@android:color/white" />
+</LinearLayout>
