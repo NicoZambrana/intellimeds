@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del medicamento" />
+
+    <EditText
+        android:id="@+id/et_dosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dosis (mg)"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/et_horario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Horario (HH:mm)" />
+
+    <EditText
+        android:id="@+id/et_dias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Días (separados por comas)" />
+
+    <Button
+        android:id="@+id/btn_guardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
