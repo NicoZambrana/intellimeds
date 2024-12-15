@@ -1,5 +1,7 @@
 package com.example.intellimeds;
 
+import android.database.sqlite.SQLiteDatabase;
+
 public class Medicamento {
 
     private int id; // Identificador único (clave primaria)
