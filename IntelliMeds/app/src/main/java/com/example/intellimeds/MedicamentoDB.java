@@ -14,7 +14,7 @@ public class MedicamentoDB {
     private SQLiteDatabase db;
 
     public MedicamentoDB(Context context, String dbName) {
-        DBHelper dbHelper = new DBHelper(context, dbName);
+        DBHelper dbHelper = new DBHelper(context.getApplicationContext(), dbName);
         db = dbHelper.getWritableDatabase();
     }
 

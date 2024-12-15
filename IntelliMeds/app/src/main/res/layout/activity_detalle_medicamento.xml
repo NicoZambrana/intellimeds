@@ -34,6 +34,13 @@
         android:layout_height="wrap_content"
         android:text="Días"
         android:paddingBottom="16dp" />
+    <Button
+        android:id="@+id/btnModificar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modificar medicamento"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnEliminar"

@@ -11,18 +11,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DetalleMedicamentoActivity extends AppCompatActivity {
     private Medicamento medicamento; // Para almacenar los datos del medicamento
-
+    private MedicamentoDB medicamentoDB; // Base de datos
+    private TextView tvNombre, tvDosis, tvHorario, tvDias; // Declarar TextViews como variables de clase
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_medicamento);
 
         // Referencias a los TextViews y el botón
-        TextView tvNombre = findViewById(R.id.tvNombre);
-        TextView tvDosis = findViewById(R.id.tvDosis);
-        TextView tvHorario = findViewById(R.id.tvHorario);
-        TextView tvDias = findViewById(R.id.tvDias);
+         tvNombre = findViewById(R.id.tvNombre);
+         tvDosis = findViewById(R.id.tvDosis);
+         tvHorario = findViewById(R.id.tvHorario);
+         tvDias = findViewById(R.id.tvDias);
         Button btnEliminar = findViewById(R.id.btnEliminar);
+        Button btnModificar = findViewById(R.id.btnModificar);
 
         // Recuperar el ID del medicamento desde el intent
         int medicamentoId = getIntent().getIntExtra("medicamento_id", -1);
@@ -43,10 +45,8 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
 
         if (medicamento != null) {
             // Mostrar los datos del medicamento
-            tvNombre.setText("Nombre: " + medicamento.getNombre());
-            tvDosis.setText("Dosis: " + medicamento.getDosis());
-            tvHorario.setText("Horario: " + medicamento.getHorario());
-            tvDias.setText("Días: " + medicamento.getDias());
+            mostrarDetallesMedicamento();
+
         } else {
             Toast.makeText(this, "El medicamento no existe en bd", Toast.LENGTH_SHORT).show();
             finish();
@@ -67,5 +67,36 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
             // Finalizar la actividad y volver a la actividad principal
             finish();
         });
+        btnModificar.setOnClickListener(v -> {
+            // Launch AgregarMedicamentoActivity for result
+            Intent intent = new Intent(DetalleMedicamentoActivity.this, AgregarMedicamentoActivity.class);
+            intent.putExtra("medicamento_id", medicamento.getId());
+            startActivityForResult(intent, 3); // Request code 3 for modify medicamento
+        });
+
+    }
+    // Handle the result in onActivityResult
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 3) {
+                // Reload medicamento details after modification
+                medicamento = medicamentoDB.obtenerMedicamentoPorId(medicamento.getId());
+                if (medicamento != null) {
+                    mostrarDetallesMedicamento();
+
+                } else {
+                    Toast.makeText(this, "El medicamento no existe después de la modificación", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        }
+    }
+    private void mostrarDetallesMedicamento() {
+        tvNombre.setText("Nombre: " + medicamento.getNombre());
+        tvDosis.setText("Dosis: " + medicamento.getDosis());
+        tvHorario.setText("Horario: " + medicamento.getHorario());
+        tvDias.setText("Días: " + medicamento.getDias());
     }
 }
