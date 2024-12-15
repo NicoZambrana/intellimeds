@@ -12,9 +12,10 @@ import java.util.List;
 
 public class MedicamentoDB {
     private SQLiteDatabase db;
+    private DBHelper dbHelper;
 
     public MedicamentoDB(Context context, String dbName) {
-        DBHelper dbHelper = new DBHelper(context.getApplicationContext(), dbName);
+        dbHelper = DBHelper.getInstance(context, dbName);
         db = dbHelper.getWritableDatabase();
     }
 
@@ -127,11 +128,32 @@ public class MedicamentoDB {
     }
 
 
-    // Cierra la base de datos al finalizar
-    @Override
-    protected void finalize() throws Throwable {
-        db.close();
-        super.finalize();
+    public void close() {
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
+    public List<Medicamento> obtenerMedicamentosPorHorarioYDia(String horario, String dia) {
+        List<Medicamento> lista = new ArrayList<>();
+        String where = MedsContract.MedsEntry.COLUMN_HORARIO + " = ? AND " + MedsContract.MedsEntry.COLUMN_DIAS + " LIKE ?";
+        String[] whereArgs = {horario, "%" + dia + "%"}; // Check if 'dia' is included in the string (e.g., "Monday,Tuesday")
+
+        Cursor cursor = db.query(MedsContract.MedsEntry.TABLE_MEDICAMENTOS, null, where, whereArgs, null, null, null);
+
+        while (cursor.moveToNext()) {
+            Medicamento medicamento = new Medicamento(
+                    cursor.getInt(cursor.getColumnIndexOrThrow(MedsContract.MedsEntry.COLUMN_ID)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(MedsContract.MedsEntry.COLUMN_NOMBRE)),
+                    cursor.getInt(cursor.getColumnIndexOrThrow(MedsContract.MedsEntry.COLUMN_DOSIS)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(MedsContract.MedsEntry.COLUMN_HORARIO)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(MedsContract.MedsEntry.COLUMN_DIAS)),
+                    cursor.getInt(cursor.getColumnIndexOrThrow(MedsContract.MedsEntry.COLUMN_TOMADO)) == 1
+            );
+            lista.add(medicamento);
+        }
+        cursor.close();
+        return lista;
+    }
+
 
 }

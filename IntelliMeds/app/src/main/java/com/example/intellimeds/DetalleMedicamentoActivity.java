@@ -39,7 +39,7 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
         }
 
         // Obtener el medicamento desde la base de datos
-        MedicamentoDB medicamentoDB = new MedicamentoDB(this, "MedicamentosDB");
+        medicamentoDB = new MedicamentoDB(this, "MedicamentosDB");
         medicamento = medicamentoDB.obtenerMedicamentoPorId(medicamentoId);
 
 

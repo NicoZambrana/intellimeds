@@ -1,16 +1,23 @@
 package com.example.intellimeds;
 
+import android.app.AlarmManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(adapter);
         //medicamentoDB.checkAllMedicamentos(); ---Comprobar elementos de db
+        // Check medication reminders periodically
+        Handler handler = new Handler(Looper.getMainLooper());
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                checkMedicationReminder();
+                handler.postDelayed(this, 10000); // Check every 10 seconds
+            }
+        };
+        handler.post(runnable);
+
     }
 
     @Override
@@ -79,11 +97,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Cerrar la base de datos para evitar fugas de memoria
-        try {
-            medicamentoDB.finalize();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
+        if (medicamentoDB != null) {
+            medicamentoDB.close();
         }
     }
+    private void checkMedicationReminder() {
+        // Get current time and day
+        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        String currentDay = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date()); // e.g., "Monday"
+
+        // Fetch medications from the database
+        List<Medicamento> medicamentos = medicamentoDB.obtenerMedicamentosPorHorarioYDia(currentTime, currentDay);
+
+        // Show reminders
+        for (Medicamento medicamento : medicamentos) {
+            showMedicationReminder(medicamento);
+        }
+    }
+
+    private void showMedicationReminder(Medicamento medicamento) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("¡Hora de tomar tu medicamento!")
+                .setMessage("Nombre: " + medicamento.getNombre() + "\nDosis: " + medicamento.getDosis())
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.show();
+    }
+
+
 }

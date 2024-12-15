@@ -5,6 +5,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
+    private static DBHelper instance;
+
+    public static synchronized DBHelper getInstance(Context context, String dbName) {
+        if (instance == null) {
+            instance = new DBHelper(context.getApplicationContext(), dbName);
+        }
+        return instance;
+    }
+
+
     public static final int DATABASE_VERSION = 1;
 
     public static final String SQL_CREATE_ENTRIES =
@@ -19,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + MedsContract.MedsEntry.TABLE_MEDICAMENTOS;
 
-    public DBHelper(Context context, String dbName) {
+    private DBHelper(Context context, String dbName) {
         super(context, dbName, null, DATABASE_VERSION);
     }
 
