@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primaryText">#000000</color> <!-- Negro o el color principal para el texto -->
+    <color name="secondaryText">#757575</color> <!-- Gris para texto secundario -->
+    <color name="background_color">#F5F5F5</color> <!-- Fondo suave -->
+    <color name="colorPrimary">#25A945</color> <!-- Color primario para los botones -->
+
+    <color name="inputBackground">#FFFFFF</color>  <!-- Fondo blanco para los inputs -->
+    <color name="hintColor">#BDBDBD</color>  <!-- Color de hint, gris claro -->
+    <color name="backgroundColor">#F5F5F5</color>  <!-- Fondo suave de la pantalla -->
+
+    <color name="headerColor">#388E3C</color> <!-- Verde oscuro -->
 </resources>

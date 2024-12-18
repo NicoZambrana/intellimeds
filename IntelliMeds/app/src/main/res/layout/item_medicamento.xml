@@ -1,29 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/tv_nombre_medicamento"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre del medicamento"
-        android:textAppearance="?attr/textAppearanceListItem"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tv_dia_medicamento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Día"
-        android:textAppearance="?attr/textAppearanceCaption"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_nombre_medicamento"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/tv_nombre_medicamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Medicamento"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_dia_medicamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Días de tratamiento"
+            android:textSize="14sp"
+            android:textColor="#757575"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
 

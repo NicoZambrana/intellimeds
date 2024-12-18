@@ -4,37 +4,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/backgroundColor">
 
+    <!-- Título de la pantalla -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Medicamento"
+        android:textSize="20sp"
+        android:textColor="@color/primaryText"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <!-- EditText para nombre del medicamento -->
     <EditText
         android:id="@+id/et_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre del medicamento" />
+        android:hint="Nombre del medicamento"
+        android:textColor="@color/primaryText"
+        android:textColorHint="@color/hintColor"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
 
+    <!-- EditText para la dosis -->
     <EditText
         android:id="@+id/et_dosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Dosis (mg)"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="@color/primaryText"
+        android:textColorHint="@color/hintColor"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
 
+    <!-- EditText para el horario -->
     <EditText
         android:id="@+id/et_horario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Horario (HH:mm)" />
+        android:hint="Horario (HH:mm)"
+        android:textColor="@color/primaryText"
+        android:textColorHint="@color/hintColor"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
 
+    <!-- EditText para los días -->
     <EditText
         android:id="@+id/et_dias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Días (separados por comas)" />
+        android:hint="Días (separados por comas)"
+        android:textColor="@color/primaryText"
+        android:textColorHint="@color/hintColor"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="32dp"/>
 
+    <!-- Botón guardar -->
     <Button
         android:id="@+id/btn_guardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Guardar"
-        android:layout_marginTop="16dp" />
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginTop="16dp"/>
+
 </LinearLayout>

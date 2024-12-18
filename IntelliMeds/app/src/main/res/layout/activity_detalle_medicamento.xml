@@ -1,52 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_color">
 
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="match_parent"
+    <!-- CardView para el nombre del medicamento -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardNombre"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre del medicamento"
-        android:textSize="18sp"
-        android:paddingBottom="8dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/tvDosis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dosis"
-        android:paddingBottom="8dp" />
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del medicamento"
+            android:textSize="20sp"
+            android:textColor="@color/primaryText"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tvHorario"
-        android:layout_width="match_parent"
+    <!-- CardView para la dosis -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDosis"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Horario"
-        android:paddingBottom="8dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/cardNombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/tvDias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Días"
-        android:paddingBottom="16dp" />
-    <Button
-        android:id="@+id/btnModificar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Modificar medicamento"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/tvDosis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dosis"
+            android:textSize="18sp"
+            android:textColor="@color/secondaryText"
+            android:padding="16dp"/>
+    </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/btnEliminar"
-        android:layout_width="match_parent"
+    <!-- CardView para el horario -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardHorario"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Eliminar medicamento"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:textColor="@android:color/white" />
-</LinearLayout>
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/cardDosis"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvHorario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horario"
+            android:textSize="18sp"
+            android:textColor="@color/secondaryText"
+            android:padding="16dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- CardView para los días -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/cardHorario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvDias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Días"
+            android:textSize="18sp"
+            android:textColor="@color/secondaryText"
+            android:padding="16dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botones para modificar y eliminar -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/cardDias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnModificar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modificar medicamento"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar medicamento"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

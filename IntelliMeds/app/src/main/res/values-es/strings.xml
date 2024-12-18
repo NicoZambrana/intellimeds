@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Intellimeds</string>
+    <string name="medicine_name">Nombre del medicamento</string>
+    <string name="dose">Dosis</string>
+    <string name="schedule">Horario</string>
+    <string name="days">Días</string>
+</resources>

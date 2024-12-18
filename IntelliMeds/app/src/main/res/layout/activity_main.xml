@@ -9,21 +9,32 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
-        >
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            android:layout_width = "match_parent"
-            android:layout_height = "?attr/actionBarSize" />
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            app:title="IntelliMeds"
+            app:titleTextColor="@android:color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-  </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        layout="@layout/content_main"
-        android:visibility="visible" />
+    <!-- Floating Action Button (FAB) que se mantiene en la parte inferior derecha -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_medicamentos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_medicamento" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -33,6 +44,7 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
         app:srcCompat="@android:drawable/ic_input_add"
+        android:backgroundTint="@color/colorPrimary"
         app:useCompatPadding="true" />
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
