@@ -33,7 +33,7 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
 
         if (medicamentoId == -1) {
             // Si no hay un ID válido, muestra un mensaje y finaliza la actividad
-            Toast.makeText(this, "No se encontró el medicamento", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.med_doesnt_exist), Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -48,7 +48,7 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
             mostrarDetallesMedicamento();
 
         } else {
-            Toast.makeText(this, "El medicamento no existe en bd", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.not_found_med), Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -58,7 +58,7 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
             medicamentoDB.eliminarMedicamento(medicamento.getId());
 
             // Mostrar un mensaje
-            Toast.makeText(this, "Medicamento eliminado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.delete_successfull), Toast.LENGTH_SHORT).show();
 
             // Preparar el resultado para la actividad principal
             Intent intent = new Intent();
@@ -87,16 +87,16 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
                     mostrarDetallesMedicamento();
 
                 } else {
-                    Toast.makeText(this, "El medicamento no existe después de la modificación", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.modify_doesnt_exist), Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
         }
     }
     private void mostrarDetallesMedicamento() {
-        tvNombre.setText("Nombre: " + medicamento.getNombre());
-        tvDosis.setText("Dosis: " + medicamento.getDosis());
-        tvHorario.setText("Horario: " + medicamento.getHorario());
-        tvDias.setText("Días: " + medicamento.getDias());
+        tvNombre.setText(getString(R.string.medicine_name)+ ": " + medicamento.getNombre());
+        tvDosis.setText(getString(R.string.dose)+ ": " + medicamento.getDosis());
+        tvHorario.setText(getString(R.string.schedule)+ ": " + medicamento.getHorario());
+        tvDias.setText(getString(R.string.days)+ ": " + medicamento.getDias());
     }
 }

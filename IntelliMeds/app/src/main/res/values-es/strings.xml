@@ -5,4 +5,22 @@
     <string name="dose">Dosis</string>
     <string name="schedule">Horario</string>
     <string name="days">Días</string>
+    <string name="next">Siguiente</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
+    <string name="previous">Anterior</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="first_fragment_label">Primer Fragmento</string>
+    <string name="second_fragment_label">Segundo Fragmento</string>
+    <string name="alert_meds">¡Hora de tomar tu medicamento!</string>
+    <string name="modify_med">Modificar medicamento</string>
+    <string name="delete_med">Eliminar medicamento</string>
+    <string name="not_found_med">No se encontró el medicamento</string>
+    <string name="med_doesnt_exist">El medicamento no existe en bd</string>
+    <string name="delete_successfull">Medicamento eliminado</string>
+    <string name="modify_successfull">Medicamento modificado correctamente</string>
+    <string name="create_successfull">Medicamento añadido correctamente</string>
+    <string name="incomplete_fields">Por favor, completa todos los campos</string>
+    <string name="modify_doesnt_exist">El medicamento no existe después de la modificación</string>
+    <string name="add_med">Agregar medicamento</string>
+    <string name="save">Guardar</string>
 </resources>

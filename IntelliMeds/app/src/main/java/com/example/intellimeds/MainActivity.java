@@ -16,14 +16,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private MedicamentoAdapter adapter;
     private MedicamentoDB medicamentoDB;
+    private Set<Integer> acknowledgedReminders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Inicializar la base de datos
         medicamentoDB = new MedicamentoDB(this, "MedicamentosDB");
-
+        // Inicializar el conjunto de recordatorios reconocidos
+        acknowledgedReminders = new HashSet<>();
         // Configurar RecyclerView
         recyclerView = findViewById(R.id.rv_medicamentos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -104,22 +108,28 @@ public class MainActivity extends AppCompatActivity {
     private void checkMedicationReminder() {
         // Get current time and day
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-        String currentDay = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date()); // e.g., "Monday"
+        String currentDay = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
 
         // Fetch medications from the database
         List<Medicamento> medicamentos = medicamentoDB.obtenerMedicamentosPorHorarioYDia(currentTime, currentDay);
 
         // Show reminders
         for (Medicamento medicamento : medicamentos) {
-            showMedicationReminder(medicamento);
+            if (!acknowledgedReminders.contains(medicamento.getId())) {
+                showMedicationReminder(medicamento);
+            }
         }
     }
 
     private void showMedicationReminder(Medicamento medicamento) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("¡Hora de tomar tu medicamento!")
-                .setMessage("Nombre: " + medicamento.getNombre() + "\nDosis: " + medicamento.getDosis())
-                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.setTitle(getString(R.string.alert_meds))
+                .setMessage(getString(R.string.medicine_name) + ": " + medicamento.getNombre() + "\n" +
+                        getString(R.string.dose) + ": " + medicamento.getDosis())
+                .setPositiveButton("OK", (dialog, which) -> {
+                    acknowledgedReminders.add(medicamento.getId());
+                    dialog.dismiss();
+                });
         builder.show();
     }
 

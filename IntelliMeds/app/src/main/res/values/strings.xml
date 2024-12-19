@@ -1,7 +1,25 @@
 <resources>
     <string name="app_name">IntelliMeds</string>
-    <string name="medicine_name">Medicine Name</string>
+    <string name="medicine_name">Name</string>
     <string name="dose">Doses</string>
     <string name="schedule">Schedule</string>
     <string name="days">Days</string>
+    <string name="next">Next</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
+    <string name="previous">Previous</string>
+    <string name="action_settings">Settings</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="alert_meds">Time to take your meds!</string>
+    <string name="modify_med">Modify medicine</string>
+    <string name="delete_med">Delete medicine</string>
+    <string name="not_found_med">Medicine not found</string>
+    <string name="med_doesnt_exist">Medicine doesn´t exist in database</string>
+    <string name="delete_successfull">Medice deleted</string>
+    <string name="modify_successfull">Medice modified succesfully</string>
+    <string name="create_successfull">Medice added successfully</string>
+    <string name="incomplete_fields">Please, complete all the fields</string>
+    <string name="modify_doesnt_exist">Medicine doesn´t exist after modify</string>
+    <string name="add_med">Add new medicine</string>
+    <string name="save">Save</string>
 </resources>

@@ -58,7 +58,7 @@ public class AgregarMedicamentoActivity extends AppCompatActivity {
 
         // Validar entrada
         if (nombre.isEmpty() || dosisStr.isEmpty() || horario.isEmpty() || dias.isEmpty()) {
-            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.incomplete_fields), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -68,7 +68,7 @@ public class AgregarMedicamentoActivity extends AppCompatActivity {
         medicamentoDB.addMedicamento(nombre, dosis, horario, dias);
 
         // Confirmar y regresar
-        Toast.makeText(this, "Medicamento añadido correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.create_successfull), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
         finish();
@@ -80,13 +80,13 @@ public class AgregarMedicamentoActivity extends AppCompatActivity {
         String dias = etDias.getText().toString().trim();
 
         if (nombre.isEmpty() || dosisStr.isEmpty() || horario.isEmpty() || dias.isEmpty()) {
-            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.incomplete_fields), Toast.LENGTH_SHORT).show();
             return;
         }
 
         int dosis = Integer.parseInt(dosisStr);
         medicamentoDB.modificarMedicamento(id, nombre, dosis, horario, dias, false);
-        Toast.makeText(this, "Medicamento modificado correctamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.modify_successfull), Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
         finish();
     }

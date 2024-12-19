@@ -135,8 +135,9 @@ public class MedicamentoDB {
     }
     public List<Medicamento> obtenerMedicamentosPorHorarioYDia(String horario, String dia) {
         List<Medicamento> lista = new ArrayList<>();
-        String where = MedsContract.MedsEntry.COLUMN_HORARIO + " = ? AND " + MedsContract.MedsEntry.COLUMN_DIAS + " LIKE ?";
-        String[] whereArgs = {horario, "%" + dia + "%"}; // Check if 'dia' is included in the string (e.g., "Monday,Tuesday")
+        // Convert both the COLUMN_DIAS and the 'dia' parameter to lowercase for case-insensitive comparison
+        String where = MedsContract.MedsEntry.COLUMN_HORARIO + " = ? AND LOWER(" + MedsContract.MedsEntry.COLUMN_DIAS + ") LIKE ?";
+        String[] whereArgs = {horario, "%" + dia.toLowerCase() + "%"}; // Convert 'dia' to lowercase
 
         Cursor cursor = db.query(MedsContract.MedsEntry.TABLE_MEDICAMENTOS, null, where, whereArgs, null, null, null);
 

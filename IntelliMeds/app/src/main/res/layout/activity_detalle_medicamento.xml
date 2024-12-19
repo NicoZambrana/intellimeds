@@ -25,7 +25,7 @@
             android:id="@+id/tvNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre del medicamento"
+            android:text="@string/medicine_name"
             android:textSize="20sp"
             android:textColor="@color/primaryText"
             android:padding="16dp"
@@ -54,7 +54,7 @@
             android:id="@+id/tvDosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dosis"
+            android:text="@string/dose"
             android:textSize="18sp"
             android:textColor="@color/secondaryText"
             android:padding="16dp"/>
@@ -80,7 +80,7 @@
             android:id="@+id/tvHorario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Horario"
+            android:text="@string/schedule"
             android:textSize="18sp"
             android:textColor="@color/secondaryText"
             android:padding="16dp"/>
@@ -106,7 +106,7 @@
             android:id="@+id/tvDias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Días"
+            android:text="@string/days"
             android:textSize="18sp"
             android:textColor="@color/secondaryText"
             android:padding="16dp"/>
@@ -128,7 +128,7 @@
             android:id="@+id/btnModificar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Modificar medicamento"
+            android:text="@string/modify_med"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@android:color/white"
             android:layout_marginBottom="8dp"/>
@@ -137,7 +137,7 @@
             android:id="@+id/btnEliminar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Eliminar medicamento"
+            android:text="@string/delete_med"
             android:backgroundTint="@android:color/holo_red_light"
             android:textColor="@android:color/white"/>
     </LinearLayout>
