@@ -1,80 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColor"
+    android:padding="16dp">
 
-    <!-- Título de la pantalla -->
-    <TextView
-        android:id="@+id/tvTitulo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_med"
-        android:textSize="20sp"
-        android:textColor="@color/primaryText"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
+        android:orientation="vertical">
 
-    <!-- EditText para nombre del medicamento -->
-    <EditText
-        android:id="@+id/et_nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/medicine_name"
-        android:textColor="@color/primaryText"
-        android:textColorHint="@color/hintColor"
-        android:background="@drawable/edittext_background"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        <!-- Título de la pantalla -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_med"
+            android:textSize="20sp"
+            android:textColor="@color/primaryText"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
 
-    <!-- EditText para la dosis -->
-    <EditText
-        android:id="@+id/et_dosis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/dose"
-        android:inputType="number"
-        android:textColor="@color/primaryText"
-        android:textColorHint="@color/hintColor"
-        android:background="@drawable/edittext_background"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        <!-- EditText para nombre del medicamento -->
+        <EditText
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/medicine_name"
+            android:textColor="@color/primaryText"
+            android:textColorHint="@color/hintColor"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
 
-    <!-- EditText para el horario -->
-    <EditText
-        android:id="@+id/et_horario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/schedule"
-        android:textColor="@color/primaryText"
-        android:textColorHint="@color/hintColor"
-        android:background="@drawable/edittext_background"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        <!-- EditText para la dosis -->
+        <EditText
+            android:id="@+id/et_dosis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dose"
+            android:inputType="number"
+            android:textColor="@color/primaryText"
+            android:textColorHint="@color/hintColor"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
 
-    <!-- EditText para los días -->
-    <EditText
-        android:id="@+id/et_dias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/days"
-        android:textColor="@color/primaryText"
-        android:textColorHint="@color/hintColor"
-        android:background="@drawable/edittext_background"
-        android:padding="12dp"
-        android:layout_marginBottom="32dp"/>
+        <!-- EditText para el horario -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule"
+            android:textSize="16sp"
+            android:textColor="@color/primaryText"/>
+        <LinearLayout
+            android:id="@+id/timePickerButtonContainer"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp">
 
-    <!-- Botón guardar -->
-    <Button
-        android:id="@+id/btn_guardar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/colorPrimary"
-        android:layout_marginTop="16dp"/>
+            <!-- Icono de reloj -->
+            <ImageView
+                android:id="@+id/clockIcon"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:src="@android:drawable/ic_menu_recent_history"/>
 
-</LinearLayout>
+            <!-- Hora seleccionada -->
+            <TextView
+                android:id="@+id/selectedTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HH:mm"
+                android:textSize="14sp"
+                android:textColor="@color/primaryText"
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <!-- Selección de días -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_days"
+            android:textSize="16sp"
+            android:textColor="@color/primaryText"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Botones para los días en cuadrícula -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:rowCount="2"
+            android:layout_marginBottom="20dp"
+            android:alignmentMode="alignMargins"
+            android:padding="8dp">
+
+            <ToggleButton
+                android:id="@+id/tb_lunes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:textOn="@string/monday_short"
+                android:textOff="@string/monday_short"
+                android:background="@drawable/toggle_selector"
+                android:textColor="@color/primaryText"
+                android:textSize="12sp"
+                android:layout_margin="4dp" />
+
+            <ToggleButton
+                android:id="@+id/tb_martes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:textOn="@string/tuesday_short"
+                android:textOff="@string/tuesday_short"
+                android:background="@drawable/toggle_selector"
+                android:textColor="@color/primaryText"
+                android:textSize="12sp"
+                android:layout_margin="4dp" />
+
+            <ToggleButton
+                android:id="@+id/tb_miercoles"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:textOn="@string/wednesday_short"
+                android:textOff="@string/wednesday_short"
+                android:background="@drawable/toggle_selector"
+                android:textColor="@color/primaryText"
+                android:textSize="12sp"
+                android:layout_margin="4dp" />
+
+            <ToggleButton
+                android:id="@+id/tb_jueves"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:textOn="@string/thursday_short"
+                android:textOff="@string/thursday_short"
+                android:background="@drawable/toggle_selector"
+                android:textColor="@color/primaryText"
+                android:textSize="12sp"
+                android:layout_margin="4dp" />
+
+            <ToggleButton
+                android:id="@+id/tb_viernes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:textOn="@string/friday_short"
+                android:textOff="@string/friday_short"
+                android:background="@drawable/toggle_selector"
+                android:textColor="@color/primaryText"
+                android:textSize="12sp"
+                android:layout_margin="4dp" />
+
+            <ToggleButton
+                android:id="@+id/tb_sabado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:textOn="@string/saturday_short"
+                android:textOff="@string/saturday_short"
+                android:background="@drawable/toggle_selector"
+                android:textColor="@color/primaryText"
+                android:textSize="12sp"
+                android:layout_margin="4dp" />
+
+            <ToggleButton
+                android:id="@+id/tb_domingo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:textOn="@string/sunday_short"
+                android:textOff="@string/sunday_short"
+                android:background="@drawable/toggle_selector"
+                android:textColor="@color/primaryText"
+                android:textSize="12sp"
+                android:layout_margin="4dp" />
+        </GridLayout>
+
+        <!-- Botón guardar -->
+        <Button
+            android:id="@+id/btn_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

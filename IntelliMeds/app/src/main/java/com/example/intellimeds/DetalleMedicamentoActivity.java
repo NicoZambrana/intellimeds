@@ -23,6 +23,7 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
          tvDosis = findViewById(R.id.tvDosis);
          tvHorario = findViewById(R.id.tvHorario);
          tvDias = findViewById(R.id.tvDias);
+
         Button btnEliminar = findViewById(R.id.btnEliminar);
         Button btnModificar = findViewById(R.id.btnModificar);
 
@@ -75,7 +76,7 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
         });
 
     }
-    // Handle the result in onActivityResult
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -97,6 +98,32 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
         tvNombre.setText(getString(R.string.medicine_name)+ ": " + medicamento.getNombre());
         tvDosis.setText(getString(R.string.dose)+ ": " + medicamento.getDosis());
         tvHorario.setText(getString(R.string.schedule)+ ": " + medicamento.getHorario());
-        tvDias.setText(getString(R.string.days)+ ": " + medicamento.getDias());
+        // Traducir los días seleccionados antes de mostrarlos
+        String diasTraducidos = traducirDias(medicamento.getDias());
+        tvDias.setText(getString(R.string.select_days) + ": " + diasTraducidos);
+    }
+
+    // Método para traducir los días
+    private String traducirDias(String dias) {
+        // Obtener los días localizados desde los recursos
+        String[] diasLocalizados = new String[]{
+                getString(R.string.sunday_short),
+                getString(R.string.monday_short),
+                getString(R.string.tuesday_short),
+                getString(R.string.wednesday_short),
+                getString(R.string.thursday_short),
+                getString(R.string.friday_short),
+                getString(R.string.saturday_short)
+        };
+
+        // Reemplazar los días almacenados por sus traducciones
+        return dias
+                .replace("Lunes", diasLocalizados[1])
+                .replace("Martes", diasLocalizados[2])
+                .replace("Miércoles", diasLocalizados[3])
+                .replace("Jueves", diasLocalizados[4])
+                .replace("Viernes", diasLocalizados[5])
+                .replace("Sábado", diasLocalizados[6])
+                .replace("Domingo", diasLocalizados[0]);
     }
 }

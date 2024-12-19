@@ -3,7 +3,14 @@
     <string name="medicine_name">Name</string>
     <string name="dose">Doses</string>
     <string name="schedule">Schedule</string>
-    <string name="days">Days</string>
+    <string name="select_days">Select Days</string>
+    <string name="monday_short">Monday</string>
+    <string name="tuesday_short">Tuesday</string>
+    <string name="wednesday_short">Wendsday</string>
+    <string name="thursday_short">Thursday</string>
+    <string name="friday_short">Friday</string>
+    <string name="saturday_short">Saturday</string>
+    <string name="sunday_short">Sunday</string>
     <string name="next">Next</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="previous">Previous</string>

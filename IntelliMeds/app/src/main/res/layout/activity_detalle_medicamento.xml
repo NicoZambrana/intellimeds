@@ -106,7 +106,7 @@
             android:id="@+id/tvDias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/days"
+            android:text="@string/select_days"
             android:textSize="18sp"
             android:textColor="@color/secondaryText"
             android:padding="16dp"/>

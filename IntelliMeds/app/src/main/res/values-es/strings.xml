@@ -4,7 +4,14 @@
     <string name="medicine_name">Nombre del medicamento</string>
     <string name="dose">Dosis</string>
     <string name="schedule">Horario</string>
-    <string name="days">Días</string>
+    <string name="select_days">Días Seleccionados</string>
+    <string name="monday_short">Lunes</string>
+    <string name="tuesday_short">Martes</string>
+    <string name="wednesday_short">Miércoles</string>
+    <string name="thursday_short">Jueves</string>
+    <string name="friday_short">Viernes</string>
+    <string name="saturday_short">Sábado</string>
+    <string name="sunday_short">Domingo</string>
     <string name="next">Siguiente</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="previous">Anterior</string>
