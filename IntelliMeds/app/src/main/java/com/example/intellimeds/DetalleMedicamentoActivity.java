@@ -97,6 +97,6 @@ public class DetalleMedicamentoActivity extends AppCompatActivity {
         tvNombre.setText(getString(R.string.medicine_name)+ ": " + medicamento.getNombre());
         tvDosis.setText(getString(R.string.dose)+ ": " + medicamento.getDosis());
         tvHorario.setText(getString(R.string.schedule)+ ": " + medicamento.getHorario());
-        tvDias.setText(getString(R.string.days)+ ": " + medicamento.getDias());
+        tvDias.setText(getString(R.string.select_days)+ ": " + medicamento.getDias());
     }
 }

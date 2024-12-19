@@ -82,19 +82,17 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            if (requestCode == 2) {
-                // Recargar la lista de medicamentos tras la eliminación
-                List<Medicamento> medicamentos = medicamentoDB.obtenerTodosMedicamentos();
-                adapter = new MedicamentoAdapter(medicamentos, medicamento -> {
-                    Intent intent = new Intent(MainActivity.this, DetalleMedicamentoActivity.class);
-                    intent.putExtra("medicamento_id", medicamento.getId()); // Pasar el ID del medicamento
-                    // En MainActivity, antes de iniciar la actividad DetalleMedicamentoActivity
-                    Log.d("MainActivity", "ID del medicamento: " + medicamento.getId());
+            // Recargar la lista de medicamentos tras la eliminación
+            List<Medicamento> medicamentos = medicamentoDB.obtenerTodosMedicamentos();
+            adapter = new MedicamentoAdapter(medicamentos, medicamento -> {
+                Intent intent = new Intent(MainActivity.this, DetalleMedicamentoActivity.class);
+                intent.putExtra("medicamento_id", medicamento.getId()); // Pasar el ID del medicamento
+                // En MainActivity, antes de iniciar la actividad DetalleMedicamentoActivity
+                Log.d("MainActivity", "ID del medicamento: " + medicamento.getId());
 
-                    startActivityForResult(intent, 2);
-                });
-                recyclerView.setAdapter(adapter);
-            }
+                startActivityForResult(intent, 2);
+            });
+            recyclerView.setAdapter(adapter);
         }
     }
 
@@ -105,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             medicamentoDB.close();
         }
     }
+
     private void checkMedicationReminder() {
         // Get current time and day
         String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());

@@ -1,0 +1,7 @@
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Estado presionado -->
+<item android:state_checked="true" android:drawable="@drawable/button_background_pressed" />
+<!-- Estado normal -->
+<item android:state_checked="false" android:drawable="@drawable/button_background"/>
+</selector>
+
