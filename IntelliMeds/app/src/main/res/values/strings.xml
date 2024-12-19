@@ -6,7 +6,7 @@
     <string name="select_days">Select Days</string>
     <string name="monday_short">Monday</string>
     <string name="tuesday_short">Tuesday</string>
-    <string name="wednesday_short">Wendsday</string>
+    <string name="wednesday_short">Wednesday</string>
     <string name="thursday_short">Thursday</string>
     <string name="friday_short">Friday</string>
     <string name="saturday_short">Saturday</string>
@@ -17,7 +17,7 @@
     <string name="action_settings">Settings</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="alert_meds">Time to take your meds!</string>
+    <string name="alert_meds">Time to take your medicine!</string>
     <string name="modify_med">Modify medicine</string>
     <string name="delete_med">Delete medicine</string>
     <string name="not_found_med">Medicine not found</string>

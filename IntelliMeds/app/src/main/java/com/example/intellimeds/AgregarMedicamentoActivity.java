@@ -3,6 +3,7 @@ package com.example.intellimeds;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -106,13 +107,13 @@ public class AgregarMedicamentoActivity extends AppCompatActivity {
     private String obtenerDiasSeleccionados() {
         StringBuilder diasSeleccionados = new StringBuilder();
 
-        if (tbLunes.isChecked()) diasSeleccionados.append("Lunes, ");
-        if (tbMartes.isChecked()) diasSeleccionados.append("Martes, ");
-        if (tbMiercoles.isChecked()) diasSeleccionados.append("Miércoles, ");
-        if (tbJueves.isChecked()) diasSeleccionados.append("Jueves, ");
-        if (tbViernes.isChecked()) diasSeleccionados.append("Viernes, ");
-        if (tbSabado.isChecked()) diasSeleccionados.append("Sábado, ");
-        if (tbDomingo.isChecked()) diasSeleccionados.append("Domingo, ");
+        if (tbLunes.isChecked()) diasSeleccionados.append(getString(R.string.monday_short)).append(", ");
+        if (tbMartes.isChecked()) diasSeleccionados.append(getString(R.string.tuesday_short)).append(", ");
+        if (tbMiercoles.isChecked()) diasSeleccionados.append(getString(R.string.wednesday_short)).append(", ");
+        if (tbJueves.isChecked()) diasSeleccionados.append(getString(R.string.thursday_short)).append(", ");
+        if (tbViernes.isChecked()) diasSeleccionados.append(getString(R.string.friday_short)).append(", ");
+        if (tbSabado.isChecked()) diasSeleccionados.append(getString(R.string.saturday_short)).append(", ");
+        if (tbDomingo.isChecked()) diasSeleccionados.append(getString(R.string.sunday_short)).append(", ");
 
         // Quitar la última coma y espacio
         if (diasSeleccionados.length() > 0) {
@@ -124,13 +125,13 @@ public class AgregarMedicamentoActivity extends AppCompatActivity {
 
     // Método para establecer los días seleccionados en los ToggleButton
     private void establecerDiasSeleccionados(String dias) {
-        if (dias.contains("Lunes") || dias.contains("Monday")) tbLunes.setChecked(true);
-        if (dias.contains("Martes") || dias.contains("Tuesday")) tbMartes.setChecked(true);
-        if (dias.contains("Miércoles") || dias.contains("Wednesday")) tbMiercoles.setChecked(true);
-        if (dias.contains("Jueves") || dias.contains("Thursday")) tbJueves.setChecked(true);
-        if (dias.contains("Viernes") || dias.contains("Friday")) tbViernes.setChecked(true);
-        if (dias.contains("Sábado") || dias.contains("Saturday")) tbSabado.setChecked(true);
-        if (dias.contains("Domingo") || dias.contains("Sunday")) tbDomingo.setChecked(true);
+        if (dias.contains(getString(R.string.monday_short))) tbLunes.setChecked(true);
+        if (dias.contains(getString(R.string.tuesday_short))) tbMartes.setChecked(true);
+        if (dias.contains(getString(R.string.wednesday_short))) tbMiercoles.setChecked(true);
+        if (dias.contains(getString(R.string.thursday_short))) tbJueves.setChecked(true);
+        if (dias.contains(getString(R.string.friday_short))) tbViernes.setChecked(true);
+        if (dias.contains(getString(R.string.saturday_short))) tbSabado.setChecked(true);
+        if (dias.contains(getString(R.string.sunday_short))) tbDomingo.setChecked(true);
     }
 
     private void guardarMedicamento() {
@@ -138,7 +139,7 @@ public class AgregarMedicamentoActivity extends AppCompatActivity {
         String dosisStr = etDosis.getText().toString().trim();
         String horario = selectedTimeText.getText().toString().trim();
         String dias = obtenerDiasSeleccionados();
-
+        //Log.d("Agregar med","dias: "+dias);
         // Validar entrada
         if (nombre.isEmpty() || dosisStr.isEmpty() || horario.isEmpty() || dias.isEmpty()) {
             Toast.makeText(this, getString(R.string.incomplete_fields), Toast.LENGTH_SHORT).show();

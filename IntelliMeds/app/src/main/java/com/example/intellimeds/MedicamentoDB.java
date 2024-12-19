@@ -96,7 +96,7 @@ public class MedicamentoDB {
         values.put(MedsContract.MedsEntry.COLUMN_HORARIO, horario);
         values.put(MedsContract.MedsEntry.COLUMN_DIAS, dias);
         values.put(MedsContract.MedsEntry.COLUMN_TOMADO, tomado ? 1 : 0);
-
+        Log.d("modificarMedicamento","horario: "+horario+", dias: "+dias);
         String where = MedsContract.MedsEntry.COLUMN_ID + " = ?";
         String[] whereArgs = {String.valueOf(id)};
 
@@ -138,7 +138,7 @@ public class MedicamentoDB {
         // Convert both the COLUMN_DIAS and the 'dia' parameter to lowercase for case-insensitive comparison
         String where = MedsContract.MedsEntry.COLUMN_HORARIO + " = ? AND LOWER(" + MedsContract.MedsEntry.COLUMN_DIAS + ") LIKE ?";
         String[] whereArgs = {horario, "%" + dia.toLowerCase() + "%"}; // Convert 'dia' to lowercase
-
+        //Log.d("obtenerMedPorHorayDia","Horario a buscar: "+horario+", Dia a buscar: "+dia);
         Cursor cursor = db.query(MedsContract.MedsEntry.TABLE_MEDICAMENTOS, null, where, whereArgs, null, null, null);
 
         while (cursor.moveToNext()) {
